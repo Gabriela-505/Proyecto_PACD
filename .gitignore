@@ -1,9 +1,12 @@
-# Solo se versionan el proyecto y el material de la presentación.
+# Solo se versiona el proyecto.
 /*
 !/.gitignore
 !/README.md
 !/proyecto_inia/
-!/presentacion/
+
+# El informe se regenera con run_all.R a partir de informe.qmd; en el
+# repositorio queda solo la versión rediseñada.
+proyecto_inia/report/informe.html
 
 # Configuración local del editor/asistente: nunca se sube.
 .claude/

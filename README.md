@@ -9,7 +9,6 @@ Actividad final de **Programación Avanzada para Ciencias de Datos**: proyecto r
 ## Contenido
 
 - [`proyecto_inia/`](proyecto_inia/): el proyecto completo (datos, código, resultados e informe Quarto). Ver su [README](proyecto_inia/README.md) para la estructura y cómo ejecutarlo.
-- [`presentacion/`](presentacion/): material de apoyo para la presentación (PDF).
 
 ## Ejecución rápida
 

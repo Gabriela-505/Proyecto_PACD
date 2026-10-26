@@ -42,7 +42,8 @@ proyecto_inia/
 │   ├── tables/              tablas de resultados (CSV)
 │   └── figures/             gráficos (PNG); por_estacion/ con uno por estación
 ├── report/
-│   ├── informe.qmd          informe Quarto
+│   ├── informe.qmd          informe Quarto (run_all.R genera informe.html)
+│   ├── informe_rediseno.html versión con diseño alternativo del informe
 │   ├── estilos.css          estilos del informe
 │   └── img/encabezado.jpg   imagen del encabezado
 ├── r_packages/              librería local de paquetes (se crea sola)
