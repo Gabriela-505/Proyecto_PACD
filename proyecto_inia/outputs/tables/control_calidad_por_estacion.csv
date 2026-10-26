@@ -1,0 +1,7 @@
+estacion,departamento,registros,fecha_inicio,fecha_fin,dias_esperados,dias_ausentes,fechas_duplicadas,ceros_como_faltante,hr_fuera_rango,precipitacion_negativa,eto_negativa,tmax_menor_tmin,llovio_inconsistente,faltantes_precipitacion,faltantes_eto
+La Estanzuela,COLONIA,3729,2016-01-01,2026-03-17,3729,0,0,0,2,0,0,0,0,0,0
+Las Brujas,CANELONES,3728,2016-01-01,2026-03-16,3728,0,0,0,0,0,0,0,0,0,0
+Salto Grande,SALTO,3729,2016-01-01,2026-03-17,3729,0,0,0,1,0,0,0,0,0,0
+Tacuarembó Glencore,TACUAREMBO,2765,2016-11-01,2026-03-17,3424,659,0,226,2,0,0,0,0,2,0
+Tacuarembó La Magnolia,TACUAREMBO,3729,2016-01-01,2026-03-17,3729,0,0,1,2,0,1,0,0,0,0
+Treinta y Tres Paso de la Laguna,TREINTA Y TRES,3722,2016-01-01,2026-03-10,3722,0,0,0,5,0,0,0,0,1,1

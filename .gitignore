@@ -1,0 +1,19 @@
+# Solo se versionan el proyecto y el material de la presentación.
+/*
+!/.gitignore
+!/README.md
+!/proyecto_inia/
+!/presentacion/
+
+# Configuración local del editor/asistente: nunca se sube.
+.claude/
+
+# Paquetes de R instalados localmente: se reinstalan con scripts/00_paquetes.R.
+proyecto_inia/r_packages/
+
+# Archivos temporales de R y Quarto.
+.Rhistory
+.RData
+.Rproj.user/
+*_files/
+.quarto/

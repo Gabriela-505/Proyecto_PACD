@@ -1,0 +1,11 @@
+departamento,estacion,mes,precipitacion_mm,eto_mm,balance_mm
+SALTO,Salto Grande,2021-12-01,7.4,206.8,-199.4
+TACUAREMBO,Tacuarembó Glencore,2022-12-01,16,214.9,-198.9
+TACUAREMBO,Tacuarembó Glencore,2021-12-01,2.5,186.4,-183.9
+COLONIA,La Estanzuela,2025-12-01,18.6,201.7,-183.1
+SALTO,Salto Grande,2025-01-01,8.2,190.4,-182.2
+CANELONES,Las Brujas,2016-01-01,11,187.8,-176.8
+CANELONES,Las Brujas,2023-01-01,9.2,183,-173.8
+TACUAREMBO,Tacuarembó Glencore,2025-01-01,26.2,194.5,-168.3
+CANELONES,Las Brujas,2025-12-01,6.5,173.5,-167
+TACUAREMBO,Tacuarembó Glencore,2023-01-01,13.9,180.8,-166.9

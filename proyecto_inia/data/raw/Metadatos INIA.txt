@@ -1,0 +1,217 @@
+DefiniciÃ³n de las variables listadas
+HeliofanÃ­a (Hrs.)
+"HeliofanÃ­a Hs se obtiene a partir de la â€œlecturaâ€ de la banda de heliofanÃ­a que va sobre el heliofanÃ³grafo. Se contabilizan las porciones de la banda que fueron quemadas por el sol, y la suma de estas equivale a las horas de insolaciÃ³n directa. 
+Para el caso de la estaciÃ³n de INIA Las Brujas, a partir del 21 de diciembre de 2020 no se realiza mÃ¡s  â€œlecturaâ€ de banda.  Las  horas  de  insolaciÃ³n  directa se estiman a partir de un modelo ajustado, para esa estaciÃ³n en particular, entre datos de radiaciÃ³n solar de la estaciÃ³n meteorolÃ³gica automÃ¡tica y radiaciÃ³n calculada a partir de heliofanÃ³grafo. La estaciÃ³n automÃ¡tica se encuentra en el mismo predio donde estÃ¡ ubicado el helioganÃ³grafo. 
+El ajuste del modelo se hizo con datos del 2011 a 2019 inclusive, y considera el mes del aÃ±o para el cual se estiman las horas de insolaciÃ³n. La validaciÃ³n  del  modelo se hizo con datos de enero a noviembre de 2020. El modelo ajustado tiene un R2=0.9446 y un RMSE=0.975 horas entre las horas de insolaciÃ³n por banda y horas de insolaciÃ³n estimadas por el modelo ajustado. Para el perÃ­odo de validaciÃ³n, por banda de heliofanÃ³grafo se contabilizaron 2513.9 horas, y por modelo ajustado 2534.5 horas. Una diferencia de 20.6 horas entre ambos mÃ©todos, lo que equivale a un 0.82% de sobreestimaciÃ³n del modelo ajustado."
+
+Temp. SC 05cm (max) (ÂºC)
+Temperatura mÃ¡xima registrada a 5 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 10cm (max) (ÂºC)
+Temperatura mÃ¡xima registrada a 10 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 20cm (max) (ÂºC)
+Temperatura mÃ¡xima registrada a 20 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 05cm (min) (ÂºC)
+Temperatura mÃ­nima registrada a 5 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 10cm (min) (ÂºC)
+Temperatura mÃ­nima registrada a 10 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 20cm (min) (ÂºC)
+Temperatura mÃ­nima registrada a 20 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SD 10cm (min) (ÂºC)
+Temperatura mÃ­nima a 10 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 05cm (min) (ÂºC)
+Temperatura mÃ­nima a 5 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 20cm (min) (ÂºC)
+Temperatura mÃ­nima a 20 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 10cm (max) (ÂºC)
+Temperatura mÃ¡xima a 10 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 20cm (max) (ÂºC)
+Temperatura mÃ¡xima a 20 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 05cm (max) (ÂºC)
+Temperatura mÃ¡xima a 5 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Precip. Acumulada (mm)
+PrecipitaciÃ³n acumulada diaria, medida convencionalmente
+
+Temp. SD 05cm (med) (ÂºC)
+Temperatura media a 5 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 10cm (med) (ÂºC)
+Temperatura media a 10 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SD 20cm (med) (ÂºC)
+Temperatura media a 20 cm de profundidad en suelo desnudo (sin vegetaciÃ³n).
+
+Temp. SC 10cm (med) (ÂºC)
+Temperatura media registrada a 10 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 20cm (med) (ÂºC)
+Temperatura media registrada a 20 cm de profundidad en suelo cubierto por pasto.
+
+Temp. SC 05cm (med) (ÂºC)
+Temperatura media registrada a 5 cm de profundidad en suelo cubierto por pasto.
+
+Temp. Aire MÃ¡xima (ÂºC)
+Temperatura mÃ¡xima registrada convencionalmente en la casilla meteorolÃ³gica, en el dÃ­a.
+
+Temp. Aire MÃ¬nima (ÂºC)
+Temperatura mÃ­nima registrada convencionalmente en la casilla meteorolÃ³gica, en el dÃ­a.
+
+T. Media ((TM+Tm)/2) (ÂºC)
+Temperatura media del dÃ­a calculada utilizando la temperatura mÃ¡xima y la mÃ­nima.
+
+EvaporaciÃ³n PichÃ© (mm)
+Cantidad de  agua que se evapora en 24 horas sin influencia solar, medida convencionalmente.
+
+EvaporaciÃ³n Tanque A (mm)
+Cantidad de agua que se evapora con la influencia solar y del viento en 24 horas.
+
+T.MÃ­n. s/cÃ©sped (ÂºC)
+Temperatura mÃ­nima registrada sobre cÃ©sped (5 cm sobre el suelo) en el dÃ­a.
+
+Recorrido Viento (km/dia)
+Recorrido del viento en la horizontal a dos metros de altura.
+
+HR MÃ¡xima (%)
+Valor mÃ¡s alto de Humedad Relativa en el dÃ­a (0hrs a 24hrs).
+
+HR MÃ­nima (%)
+Valor mÃ¡s bajo de Humedad Relativa en el dÃ­a (0hrs a 24hrs).
+
+HR Media (%)
+"Promedio (suma de las HR% de las 24 horas / 24) de la humedad relativa
+en el dÃ­a (0hrs a 24hrs) ."
+
+Temp. Aire Media (ÂºC)
+Temperatura Media del Aire.
+
+Helada Agromet. (S:1/N:0)
+Cuando a nivel de cÃ©sped (5 cm del suelo) la temperatura es 0Â°C o menor, se indica con un â€œ1â€ que hubo helada agrometeorolÃ³gica. Se indica con â€œ0â€ cuando no la hubo.
+
+Helada Meteo. (S:1/N:0)
+"Cuando la lectura del termÃ³metro de mÃ­nima en la casilla meteorolÃ³gica (entre
+1.50m a 2.00m del suelo) es de 0Â°C o menor, se indica con un â€œ1â€ que hubo helada
+MeteorolÃ³gica. Un â€œ0â€ indica que no la hubo."
+
+Amplitud TÃ©rmica (ÂºC)
+Amplitud TÃ©rmica Â°C = Temperatura MÃ¡xima Â°C - Temperatura mÃ­nima Â°C
+
+HeliofanÃ­a Relativa (%)
+RelaciÃ³n porcentual entre el valor real y la insolaciÃ³n mÃ¡xima posible (tabulada de acuerdo a la latitud) para ese dÃ­a del aÃ±o.
+
+Evapotransp. Penman (mm)
+El cÃ¡lculo de la evapotranspiraciÃ³n potencial segÃºn el mÃ©todo de Penman-Monteith se basa en la ecuaciÃ³n definida por FAO (haciendo uso de la definiciÃ³n del cultivo de referencia como un cultivo hipotÃ©tico con una altura asumida 0.12m, con una resistencia superficial de 70 sm-1 y un albedo de 0.23 y que representa a la evapotranspiraciÃ³n de una superficie extensa de pasto verde de altura uniforme, creciendo activamente y adecuadamente regado) con algunas modificaciones de algunos parÃ¡metros ajustados para las condiciones del Uruguay.
+
+Rad.Solar (xHelio)cal/cmÂ²
+La RadiaciÃ³n Solar se calcula por fÃ³rmula de Angstrom, la cual relaciona la radiaciÃ³n solar con la radiaciÃ³n extraterrestre y la duraciÃ³n relativa de la insolaciÃ³n.
+
+Precip. Efectiva (mm)
+Es la precipitaciÃ³n del dÃ­a, descontando el escurrimiento superficial.
+
+Un. TÃ©rmicas Arroz
+"Se utiliza para calcular el alcance de madurez fisiolÃ³gica de un cultivo. Se calcula tomando el promedio diario de cada dÃ­a de la To mÃ¡xima y mÃ­nima comparada con una temperatura base (para arroz = 10 Â°C).
+UT = (mÃ¡x + mÃ­n) / 2) â€“ temperatura base
+o Temperatura Base = para el arroz 10Â°C
+o Si la temperatura mÃ¡xima es >= a 34Â°C, se topea en 34Â°C la temperatura mÃ¡xima.
+o Si la temperatura mÃ­nima es >= a 21 Â°C, se topea en 21Â°C la temperatura mÃ­nima.
+o Si (mÃ¡x + mÃ­n) / 2) es menor a la temperatura base, la unidad tÃ©rmica de arroz queda en 0."
+
+Unidad FrÃ­o (Richardson)
+Es una unidad donde se asigna a cada temperatura o intervalo de temperaturas un nivel de eficiencia para contribuir a la ruptura de la dormiciÃ³n. Las UF diarias se obtienen mediante la sumatoria de las UF de cada hora del dÃ­a (00hs a 24hs) por lo que se toman los datos horarios de temperatura.
+
+T <=7.2 (Weinberger)(Hrs)
+Cantidad de horas en el dÃ­a (0hrs a 24hrs) en las que la temperatura es menor o igual a 7.2 Â°C.
+
+LloviÃ³ (S:1/N:0)
+Refiere a si ese dÃ­a precipitÃ³ (indicado con 1) o no se registrÃ³ precipitaciÃ³n (indicado con 0).
+
+HR >=90% y <=99% (Horas)
+Cantidad de horas del dÃ­a (0hrs a 24hrs) en que la Humedad Relativa estuvo igual o entre 90 % y 99%.
+
+Humedad Rel. = 100% (Hrs)
+Cantidad de horas en el dÃ­a (0hrs a 24hrs) que la Humedad Relativa fue igual a 100%.
+
+T.Min < 15ÂºC (S:1/N:0)
+Cuando la temperatura mÃ­nima en la casilla meteorolÃ³gica es menor a 15Â°C se indica con un â€œ1â€ y por el contrario con un â€œ0â€.
+
+Grados Dias 06.0Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 04.5Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 07.0Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 08.0Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 09.0Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 10.0Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 10.5Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."
+
+Grados Dias 12.8Âº (ÂºC)
+"Se calcula restando el promedio diario (00hs a 24hs) de cada dÃ­a con una temperatura base.
+
+Grados dÃ­as = Promedio 24hs - Temperatura base
+
+Temperaturas Bases: 4.5Â°C; 6.0Â°C; 7.0Â°C; 8.0C; 9.0Â°C; 10.0Â°C; 10.5Â°C; 12.8Â°C.
+
+Si el promedio de temperatura del dÃ­a es menor a la temperatura base, los grados dÃ­as no se calculan, la variable queda vacÃ­a."

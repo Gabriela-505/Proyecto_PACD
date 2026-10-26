@@ -1,0 +1,7 @@
+estacion,departamento,anios_usados,pendiente_mm_por_anio,ic_inferior,ic_superior,valor_p,interpretacion
+Las Brujas,CANELONES,10,-49.598424,-99.355832,0.158983,0.050578,sin evidencia de tendencia lineal
+Salto Grande,SALTO,10,-26.462727,-102.844439,49.918984,0.447402,sin evidencia de tendencia lineal
+La Estanzuela,COLONIA,10,-26.386061,-96.123964,43.351843,0.408358,sin evidencia de tendencia lineal
+Tacuarembó La Magnolia,TACUAREMBO,10,-19.873939,-116.761091,77.013213,0.648837,sin evidencia de tendencia lineal
+Treinta y Tres Paso de la Laguna,TREINTA Y TRES,10,3.36303,-69.187703,75.913764,0.917506,sin evidencia de tendencia lineal
+Tacuarembó Glencore,TACUAREMBO,6,24.59,-27.46426,76.64426,0.25988,sin evidencia de tendencia lineal
