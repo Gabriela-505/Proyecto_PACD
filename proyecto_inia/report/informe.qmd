@@ -8,6 +8,7 @@ author:
   - "Gabriela Flores"
 date: today
 date-format: "D [de] MMMM [de] YYYY"
+description: "¿Qué tan intensa fue la sequía de 2022-2023 y afectó por igual al sur y al norte del país?"
 lang: es
 language:
   title-block-author-single: "Autor"
@@ -18,7 +19,11 @@ format:
     theme: flatly
     title-block-banner: "#25415a"
     title-block-banner-color: "#ffffff"
-    css: estilos.css
+    # Diseño: fuentes, estilos y animaciones de la carpeta estilo/.
+    css:
+      - estilo/fuentes.css
+      - estilo/ingenieria.css
+    include-after-body: estilo/scripts.html
     toc: true
     toc-location: left
     toc-title: "Contenido"
@@ -91,6 +96,75 @@ tacuarembo <- anual %>%
   filter(!is.na(precipitacion_anual_glencore), !is.na(precipitacion_anual_magnolia)) %>%
   mutate(menos_lluvia_pct = 100 * (1 - precipitacion_anual_glencore / precipitacion_anual_magnolia))
 glencore_2017 <- tacuarembo %>% filter(anio == 2017)
+
+# --- Bloques de diseño generados con los datos ------------------------------
+meses_nombre <- c("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+                  "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+con_signo <- function(x) paste0(if_else(x > 0, "+", ""), fmt(x))
+
+# Nombre corto y posición aproximada de cada estación en el mapa (coordenadas
+# del dibujo, no geográficas). dx/dy ubican la etiqueta respecto del círculo.
+estaciones_mapa <- tibble::tribble(
+  ~estacion,                          ~corto,              ~cx,   ~cy,   ~dx, ~dy, ~ancla,
+  "La Estanzuela",                    "La Estanzuela",      99.7, 439.1,  14,  34, "start",
+  "Las Brujas",                       "Las Brujas",        212.7, 471.9,  22,  14, "start",
+  "Tacuarembó Glencore",              "Glencore",          220.2, 211.8, -14,  26, "end",
+  "Salto Grande",                     "Salto Grande",       83.0, 134.4,  26,  -4, "start",
+  "Treinta y Tres Paso de la Laguna", "Paso de la Laguna", 394.4, 332.9, -28,  34, "end",
+  "Tacuarembó La Magnolia",           "La Magnolia",       256.2, 177.1,  40, -10, "start"
+)
+balance_mapa <- sql_sequia %>%
+  arrange(balance_2022_2023_mm) %>%
+  inner_join(estaciones_mapa, by = "estacion") %>%
+  mutate(
+    valor = balance_2022_2023_mm,
+    radio = 6 + 24 * sqrt(abs(valor) / max(abs(valor))),
+    clase = if_else(valor < 0, "neg", "pos")
+  )
+```
+
+```{r}
+#| label: cifras
+#| output: asis
+# Resumen inicial con los valores de las tablas 2, 3 y 5.
+barras <- balance_mapa %>%
+  mutate(li = sprintf(
+    '<li data-valor="%s"><span class="b-nombre">%s<small>%s</small></span><span class="b-pista"><span class="b-barra"></span></span><span class="b-num%s">%s</span></li>',
+    valor, corto, nombre_departamento(departamento), if_else(valor < 0, " neg", ""), con_signo(valor)
+  )) %>%
+  pull(li)
+n_con_tendencia <- sum(tendencias$interpretacion != "sin evidencia de tendencia lineal")
+mes_peor <- as.Date(peor$mes_del_minimo)
+
+cat(
+  '<section class="cifras" aria-labelledby="cifras-titulo">',
+  '<div class="cifras-cab"><h2 id="cifras-titulo">Resultados en cifras</h2><p>Valores de las tablas 2, 3 y 5</p></div>',
+  '<div class="cifras-grid">',
+  '<div class="cifra cifra-principal">',
+  '<h3>Balance acumulado 2022-2023 por estación</h3>',
+  '<p>Precipitación menos evapotranspiración, suma de los 24 meses (mm).</p>',
+  '<ul class="barras">', barras, '</ul>',
+  '<p class="barras-leyenda"><span class="ley-def">déficit</span><span>excedente</span></p>',
+  '</div>',
+  '<div class="cifra"><h3>Peor acumulado de 12 meses</h3>',
+  sprintf('<div class="cifra-valor es-deficit">%s<small>mm</small></div>', fmt(peor$balance_acumulado_minimo)),
+  sprintf('<p>%s, 12 meses que terminan en %s de %s.</p>', peor$estacion,
+          meses_nombre[as.integer(format(mes_peor, "%m"))], format(mes_peor, "%Y")),
+  '</div>',
+  '<div class="cifra"><h3>Tendencia lineal 2016-2025</h3>',
+  sprintf('<div class="cifra-valor">%d de %d<small>estaciones</small></div>', n_con_tendencia, nrow(tendencias)),
+  sprintf('<p>%s el IC 95 %% de la pendiente excluye el cero.</p>',
+          if (n_con_tendencia == 0) "En ninguna estación" else "En esas estaciones"),
+  '</div>',
+  '<div class="cifra"><h3>Base analizada</h3>',
+  sprintf('<div class="cifra-valor">%s<small>registros diarios</small></div>', fmt(nrow(diario))),
+  sprintf('<p>%d estaciones agroclimáticas de INIA, de %s a %s.</p>',
+          n_distinct(diario$estacion), format(min(diario$fecha)), format(max(diario$fecha))),
+  '</div>',
+  '</div>',
+  '</section>',
+  sep = "\n"
+)
 ```
 
 # Introducción y pregunta
@@ -103,7 +177,7 @@ $$
 
 **Pregunta:** ¿cómo se comportó el balance hídrico en las estaciones agroclimáticas de INIA entre 2016 y 2025, qué tan intensa fue la sequía de 2022–2023 y afectó por igual al sur y al norte del país?
 
-::: {.respuesta}
+::: {.callout-tip appearance="simple" icon=false}
 - **No afectó a todos por igual.** En 2022–2023 el sur se quedó sin agua: en La Estanzuela (Colonia) la evaporación superó a la lluvia por **`r fmt(abs(estanzuela_2022_23$balance_2022_2023_mm))` mm**. En el norte, en cambio, La Magnolia (Tacuarembó) tuvo **`r fmt(magnolia_2022_23$balance_2022_2023_mm)` mm de agua a favor**.
 - **La sequía fue larga, no puntual:** lo que la hizo grave fue que faltó agua muchos meses seguidos.
 - **No es una tendencia:** en estos 10 años el balance no empeora de forma sostenida. La sequía fue un episodio.
@@ -116,6 +190,20 @@ $$
 - Variables utilizadas: `PrecipAcum` (precipitación diaria, mm) y `EvapotranspPenman` (evapotranspiración Penman-Monteith ajustada a Uruguay, mm). Como apoyo para validar se usan `TempAireMedia`, `TempAireMax`, `TempAireMin`, `HRMed` y `Llovio`.
 
 Los datos originales están en `data/raw/` y nunca se modifican. Todo lo derivado se genera en `data/processed/` y en `outputs/`.
+
+```{=html}
+<figure class="pipeline" aria-label="Esquema del pipeline de datos">
+<ol class="pipeline-pasos">
+<li class="paso-almacen"><span class="paso-lugar">data/raw/</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Datos originales</h4><p>INIA.csv, EstacionAgr.csv y Departamentos.csv. Solo lectura: nunca se modifican.</p></div></li>
+<li class="paso-proceso"><span class="paso-lugar">verificación</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Validación de estructura y join <span class="paso-alto">detiene si falla</span></h4><p>Columnas requeridas, estaciones presentes en el catálogo, fechas válidas y ningún registro sin departamento.</p></div></li>
+<li class="paso-proceso"><span class="paso-lugar">01_preparar_datos.R</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Limpieza y control de calidad</h4><p>Normalización NFC, corrección de la errata, ceros y valores fuera de rango a NA, control por estación con map_dfr y regla de cobertura del 80 %.</p></div></li>
+<li class="paso-almacen"><span class="paso-lugar">data/processed/</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Base procesada</h4><p>Base diaria limpia y base relacional inia.sqlite con los datos mensuales y los dos catálogos.</p></div></li>
+<li class="paso-proceso"><span class="paso-lugar">análisis</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Indicadores y modelos</h4><p>Agregación mensual con group_nest() + map(), anomalías, acumulado móvil de 12 meses, consultas SQL con JOIN y GROUP BY y regresión lineal por estación.</p></div></li>
+<li class="paso-almacen"><span class="paso-lugar">outputs/</span><span class="paso-nodo"></span><div class="paso-cuerpo"><h4>Tablas, figuras e informe</h4><p>Los resultados se regeneran con los scripts y este informe Quarto los integra.</p></div></li>
+</ol>
+<figcaption class="pipeline-pie"><span><strong>Esquema del pipeline.</strong> Todo se reconstruye desde data/raw ejecutando <code>run_all.R</code>, sin pasos manuales.</span><span class="pipeline-leyenda"><span class="ley-almacen">datos</span><span class="ley-proceso">proceso</span></span></figcaption>
+</figure>
+```
 
 # Preparación y calidad de los datos
 
@@ -175,6 +263,21 @@ La @fig-anomalias compara cada mes con lo normal para esa época del año en cad
 
 El acumulado de 12 meses muestra dos períodos secos generalizados: el ciclo 2020–2021 y, con más fuerza, 2022–2023. El mínimo absoluto lo alcanzó **`r peor$estacion`**: `r fmt(peor$balance_acumulado_minimo)` mm en los 12 meses que terminan en `r format(peor$mes_del_minimo, "%m/%Y")`. Después, 2024 cerró con balance positivo en todas las estaciones, aunque en La Estanzuela apenas superó el equilibrio.
 
+```{=html}
+<figure class="comparador">
+<div class="comp-lienzo">
+<img class="comp-a" src="estilo/fotos/paso-2022.jpg" alt="Embalse de Paso Severino en junio de 2022, imagen satelital Landsat 9">
+<img class="comp-b" src="estilo/fotos/paso-2023.jpg" alt="Embalse de Paso Severino el 13 de junio de 2023, imagen satelital Landsat 9, con mucha menos agua">
+<span class="comp-etq comp-etq-a">Junio 2022</span>
+<span class="comp-etq comp-etq-b">13 de junio de 2023</span>
+<span class="comp-linea" aria-hidden="true"></span>
+<span class="comp-mango" aria-hidden="true">‹ ›</span>
+<input type="range" min="0" max="100" value="50" step="0.1" aria-label="Deslizar para comparar junio de 2022 con junio de 2023">
+</div>
+<figcaption class="quarto-float-caption quarto-float-caption-bottom"><span class="cap-num">Satélite</span><span class="cap-texto">Embalse de Paso Severino (Florida) en junio de 2022 y en junio de 2023. Arrastrá la barra para comparar. Imágenes Landsat 9, NASA, dominio público.</span></figcaption>
+</figure>
+```
+
 ```{r}
 #| label: tbl-sequia
 #| tbl-cap: "Indicadores de sequía por estación"
@@ -205,6 +308,36 @@ sql_sequia %>%
 ```
 
 El contraste regional es claro: en 2022–2023 La Estanzuela (Colonia) acumuló un balance de `r fmt(estanzuela_2022_23$balance_2022_2023_mm)` mm, con `r estanzuela_2022_23$meses_con_deficit` de 24 meses en déficit. En el mismo período, La Magnolia (Tacuarembó) tuvo un excedente de `r fmt(magnolia_2022_23$balance_2022_2023_mm)` mm. **La sequía golpeó sobre todo al sur.**
+
+```{r}
+#| label: mapa
+#| output: asis
+# Mapa de Uruguay: los contornos de los departamentos son fijos (Natural Earth);
+# el tamaño, el color y el valor de cada círculo salen de la Tabla 3.
+departamentos_svg <- paste(readLines("estilo/mapa_departamentos.svg", encoding = "UTF-8"), collapse = "\n")
+circulos <- balance_mapa %>%
+  mutate(i = row_number() - 1, g = sprintf(
+    '<g class="estacion %s" style="--i:%d"><circle class="onda" cx="%.1f" cy="%.1f" r="%.1f"/><circle class="burbuja" cx="%.1f" cy="%.1f" r="%.1f"/><circle class="punto" cx="%.1f" cy="%.1f" r="2.6"/><text x="%.1f" y="%.1f" text-anchor="%s"><tspan class="m-nombre">%s</tspan><tspan class="m-valor" x="%.1f" dy="15">%s mm</tspan></text></g>',
+    clase, i, cx, cy, radio, cx, cy, radio, cx, cy, cx + dx, cy + dy, ancla, corto, cx + dx, con_signo(valor)
+  )) %>%
+  pull(g)
+
+cat(
+  '<figure class="mapa">',
+  '<div class="mapa-lienzo"><svg class="mapa-svg" viewBox="0 0 520 520" role="img" aria-label="Mapa de Uruguay con el balance hídrico acumulado 2022-2023 de las seis estaciones">',
+  departamentos_svg,
+  '<g class="estaciones">', circulos, '</g>',
+  '</svg></div>',
+  '<figcaption class="mapa-texto">',
+  '<h3>El mismo período, dos realidades</h3>',
+  '<p>Balance hídrico acumulado entre enero de 2022 y diciembre de 2023. El área de cada círculo es proporcional a la magnitud del balance.</p>',
+  '<p class="mapa-leyenda"><span class="ley-def">déficit</span><span class="ley-exc">excedente</span></p>',
+  '<p class="mapa-nota">Valores de la Tabla 3. Ubicación aproximada de las estaciones dentro de su departamento.</p>',
+  '</figcaption>',
+  '</figure>',
+  sep = "\n"
+)
+```
 
 El norte no quedó al margen. Como muestra la @tbl-sequia, todas las estaciones alcanzaron su peor acumulado de 12 meses entre abril y agosto de 2023. Lo que cambia es la duración: en el sur el déficit venía acumulándose desde 2022, mientras que en Salto y Tacuarembó las lluvias de fines de 2023 lo revirtieron. Por eso el balance de los dos años es positivo o cercano a cero en el norte.
 
@@ -276,4 +409,24 @@ El balance hídrico resume mejor que la precipitación sola la disponibilidad de
 #| label: sesion
 #| echo: true
 R.version.string
+```
+
+```{=html}
+<footer class="colofon">
+<p><strong>Balance hídrico en estaciones INIA, 2016-2025.</strong> Informe reproducible generado con Quarto. Las tablas y figuras se regeneran con los scripts del proyecto a partir de los datos originales, sin editar archivos intermedios a mano.</p>
+<p class="colofon-ruta">Rscript run_all.R<br>data/raw → data/processed → outputs → informe<br>Programación Avanzada para Ciencias de Datos</p>
+<div class="creditos">
+<h4>Créditos de imágenes</h4>
+<ul>
+<li><a href="https://commons.wikimedia.org/wiki/File:Sierras_De_Carap%C3%A9_(238675839).jpeg">Sierras de Carapé</a>, Marcelo Campi, CC BY-SA 3.0</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Sencrop_weather_station_-_geograph.org.uk_-_7110228.jpg">Estación meteorológica</a>, Philip Halling, CC BY-SA 2.0</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Field_weather_station_-_Fernow_Experimental_Forest.jpg">Parque de instrumentos, Fernow Experimental Forest</a>, dominio público</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Represa_de_Canelon_Grande_seca_durante_la_sequia.jpg">Represa de Canelón Grande seca</a>, Enxuta, CC BY-SA 4.0</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Cracked_dry_soil_Aceredo.jpg">Suelo agrietado en Aceredo</a>, o_andras, CC BY-SA 4.0</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Spring_storm_clouds_over_fields.jpg">Nubes de tormenta sobre campos</a>, th_norge, CC BY 4.0</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Reserva_Paso_Severino_(Uruguay)_Junio_2022.jpg">Paso Severino 2022</a> y <a href="https://commons.wikimedia.org/wiki/File:Reserva_Paso_Severino_(Uruguay)_Junio_2023.jpg">2023</a>, NASA (Landsat 9), dominio público</li>
+<li>Límites departamentales del mapa: Natural Earth, dominio público</li>
+</ul>
+</div>
+</footer>
 ```

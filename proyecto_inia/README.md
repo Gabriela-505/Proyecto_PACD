@@ -42,10 +42,9 @@ proyecto_inia/
 │   ├── tables/              tablas de resultados (CSV)
 │   └── figures/             gráficos (PNG); por_estacion/ con uno por estación
 ├── report/
-│   ├── informe.qmd          informe Quarto (run_all.R genera informe.html)
-│   ├── informe_rediseno.html versión con diseño alternativo del informe
-│   ├── estilos.css          estilos del informe
-│   └── img/encabezado.jpg   imagen del encabezado
+│   ├── informe.qmd          informe Quarto (fuente)
+│   ├── informe.html         informe generado por run_all.R
+│   └── estilo/              diseño: estilos, fuentes, fotos, animaciones y mapa base
 ├── r_packages/              librería local de paquetes (se crea sola)
 └── run_all.R                ejecuta todo en orden
 ```
