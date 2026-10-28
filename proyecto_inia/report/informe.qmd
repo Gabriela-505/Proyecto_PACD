@@ -1,6 +1,6 @@
 ---
 title: "Balance hídrico en estaciones INIA (2016–2025)"
-subtitle: "Programación Avanzada para Ciencias de Datos<br>**Docente:** Marcelo Danessi<br>**Autores:** Alejandra Ramírez, Alvaro Barreto, Katerin Gonzalez y Gabriela Flores<br>**Fecha:** {{< meta date >}}"
+subtitle: "Programación Avanzada para Ciencias de Datos<br>**Docente:** Marcelo Danesi<br>**Autores:** Alejandra Ramírez, Alvaro Barreto, Katerin Gonzalez y Gabriela Flores<br>**Fecha:** {{< meta date >}}"
 author:
   - "Alejandra Ramírez"
   - "Alvaro Barreto"

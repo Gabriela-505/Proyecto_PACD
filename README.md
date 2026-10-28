@@ -2,7 +2,7 @@
 
 Actividad final de **Programación Avanzada para Ciencias de Datos**: proyecto reproducible sobre el balance hídrico en estaciones agroclimáticas de INIA (2016–2025).
 
-**Docente:** Marcelo Danessi
+**Docente:** Marcelo Danesi
 
 **Autores:** Alejandra Ramírez, Alvaro Barreto, Katerin Gonzalez y Gabriela Flores.
 

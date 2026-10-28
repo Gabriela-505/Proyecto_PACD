@@ -2,7 +2,7 @@
 
 Proyecto reproducible de ciencia de datos – Programación Avanzada para Ciencias de Datos.
 
-**Docente:** Marcelo Danessi
+**Docente:** Marcelo Danesi
 
 **Autores:** Alejandra Ramírez, Alvaro Barreto, Katerin Gonzalez y Gabriela Flores.
 
